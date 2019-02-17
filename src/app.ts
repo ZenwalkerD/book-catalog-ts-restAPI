@@ -7,6 +7,7 @@ app.use(bodyParser.json());
 app.set("port", 3000);
 app.get("/books", bookController.allbooks);
 app.get("/books/:id", bookController.getBook);
+app.put("/books/:id",bookController.addBook);
 
 app.listen(app.get("port"),() => {
     console.log("app is running.." ,app.get("port"))

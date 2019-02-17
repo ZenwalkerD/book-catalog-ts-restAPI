@@ -1,8 +1,8 @@
 import mongoose, { mongo } from 'mongoose';
 
-const uri: string = "mongodb://127.0.0.1:1111/local";
+const uri: string = "mongodb://127.0.0.1:27017/local";
 
-mongoose.connect(uri, (error : any)=> {
+mongoose.connect(uri,{useNewUrlParser:true}, (error : any)=> {
     console.log(error)
 });
 

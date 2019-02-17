@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 
 import Book from "./../book";
+import { Mongoose } from 'mongoose';
+import { ObjectId } from 'bson';
 
 export let allbooks = (req: Request, res: Response) => {
     let books = Book.find((err: any, books: any) => {
@@ -14,6 +16,11 @@ export let getBook = (req: Request, res: Response) => {
     });
 }
 
+export let addBook = (req: Request, res: Response) => {
+    let book = new Book(req.body);
+    console.log(new ObjectId(req.params.id));
+    book.save((error: any)=> SendResponse(error,res, book));
+};
 
 function SendResponse(err: any, res: Response, books: any) {
     if (err) {
